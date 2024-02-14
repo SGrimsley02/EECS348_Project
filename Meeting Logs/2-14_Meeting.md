@@ -1,6 +1,8 @@
 # Meeting Log
 **Date:** Feb 14, 5:00pm
+
 **Purpose:** Welcome meeting
+
 **Attendance:** Sam Grimsley, Blair Bassett, Conner Glazner, Abhiroop Goel, Jason Do, Justin Owolabi
 
 ## Summary
