@@ -11,7 +11,7 @@ order to start filling out the Project Management Plan.
 During the meeting, we established the Github Repository and shared it with all the group members. We then
 discussed plans for how to manage editing the Project Management Plan and future documents, settling on using Google
 Drive to share and edit the docs while maintaining up-to-date copies on Github, that way everyone can easily view and
-edit the documents. Meeting notes will remain .txt files saved on Github for ease of access.
+edit the documents. Meeting notes will remain .md files saved on Github for ease of access.
 
 Lastly, we attempted to come up with a team/company name, with the top choice at the moment being "Miracle Workers". 
 This name is likely to change.
