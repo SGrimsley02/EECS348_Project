@@ -6,6 +6,8 @@
 **Attendance:** 
 
 ## Summary
+Before the meeting, it was noted in class that advanced options such as allowing variables and generating truth tables may be worth extra credit.
+
 
 
 ## Important Dates
