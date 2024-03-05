@@ -33,4 +33,4 @@ We ended the meeting making sure everyone has what they need in order to complet
 * February 24- Complete Project Plan
 * February 25- Project Management Plan Due
 ## Next Meeting
-February 28 at 4:00, or as needed.
+The next meeting has been rescheduled for March 6 at 4:30, via Zoom.
