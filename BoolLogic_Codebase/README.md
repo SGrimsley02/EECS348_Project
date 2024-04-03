@@ -1,0 +1,1 @@
+Starting directory for any early iterations of code for Logic Simulator program
