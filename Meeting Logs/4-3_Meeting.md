@@ -25,5 +25,5 @@ A few example elements of the program that should start to receive attention are
 * April 14: Software Architecture Document Due
 
 ## Next Meeting
-~~ Likely Wednesday April 10, or Thursday April 11, to discuss any final requirements for the document and reconvene on code base. ~~
+~~Likely Wednesday April 10, or Thursday April 11, to discuss any final requirements for the document and reconvene on code base.~~
 CANCELLED
