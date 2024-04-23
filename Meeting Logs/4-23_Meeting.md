@@ -21,6 +21,8 @@ The following lists how the implementation will be broken up by group member:
 
 Other things of note:
 - We will not be completing additional test cases
+- Classes will use UpperCamelCase, methods snake_case, and variables/objects lowerCamelCase
+- Be sure to leave extensive comments on all code
 - More information on Error #4 and the possibility of assignment will be provided soon
 
 ## Important Dates
