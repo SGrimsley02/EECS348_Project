@@ -7,6 +7,7 @@
 
 ## Summary
 This meeting was held without Roop due to a large number of conflicts the rest of the semester. For this same reason, this is likely the last meeting.
+
 We discussed the implementation of the Logic Simulator. What follows are important notes from the meeting:
 
 - Input parser: Send a string to exp parser. Mostly an error handler, but will convert T and F to 1 and 0 respectively. Returns either the result of the expression, or an error code.
