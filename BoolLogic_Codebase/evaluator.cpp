@@ -5,7 +5,8 @@
 #include <cctype>
 
 using namespace std;
-
+//this has little to no error implementation and only works when the expression is error free
+//the expParser or inputParser needs to check the expression for errors before passing it to this class
 class BooleanExpressionCalculator {
 private:
     unordered_map<char, bool> variables;
@@ -15,7 +16,7 @@ private:
         stack<bool> operands;
 
         for (char c : expression) {
-            cout << "Processing character: " << c << endl; // Debug statement
+            //cout << "Processing character: " << c << endl; // Debug statement
             if (isalpha(c)) { // Variable
                 operands.push(variables[c]);
             } else if (c == '(') { // Left parenthesis
@@ -55,7 +56,7 @@ private:
     } else {
         bool operand2 = operands.top(); operands.pop();
         bool operand1 = operands.top(); operands.pop();
-        cout << "Evaluating operation: " << operand1 << " " << op << " " << operand2 << endl; // Debug statement
+        //cout << "Evaluating operation: " << operand1 << " " << op << " " << operand2 << endl; // Debug statement
         bool result;
         switch (op) {
             case '&': result = operand1 && operand2; break;
