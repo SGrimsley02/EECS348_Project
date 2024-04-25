@@ -33,6 +33,7 @@ int main() {
             cout << "Goodbye!" << endl;
             break;
         }
+        //Still need to actually parse the input, as of now just sending it straight to eval module for testing
         //Evaluate the expression
         try {
             BooleanExpressionCalculator calc;
