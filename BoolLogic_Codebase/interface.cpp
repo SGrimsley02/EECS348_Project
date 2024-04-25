@@ -34,6 +34,10 @@ int main() {
             break;
         }
         //Still need to actually parse the input, as of now just sending it straight to eval module for testing
+        //Final workflow will likely be to either send input to exp parse and from there to eval,
+        //Or send input to exp parse to clean input, then send from here to eval. Just depends on parse implementation
+
+        
         //Evaluate the expression
         try {
             BooleanExpressionCalculator calc;
