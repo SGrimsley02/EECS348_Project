@@ -1,5 +1,8 @@
 #include <iostream>
+#include "evaluator.h"
 using namespace std;
+
+
 
 /*
 This program will handle any and all interaction with the user. It should be able to ask the user for input
