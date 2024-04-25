@@ -89,7 +89,7 @@ public:
     }
 
     bool evaluate(const string& expression) {
-        cout << "Evaluating expression: " << expression << endl;
+        //cout << "Evaluating expression: " << expression << endl;
         return evaluateExpression(expression);
     }
 };
