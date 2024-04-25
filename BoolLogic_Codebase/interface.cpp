@@ -41,6 +41,8 @@ int main() {
         //Evaluate the expression
         try {
             BooleanExpressionCalculator calc;
+            calc.setVariable('T',true);
+            calc.setVariable('F',false);
             cout << "The result of the expression is: " << calc.evaluate(input) << endl; //May need to convert from 1/0 to T/F
         } catch (const char* e) { //Catch errors from the parser
             cout << "Error: " << e << endl; //Print message may change as we figure out what errors are
