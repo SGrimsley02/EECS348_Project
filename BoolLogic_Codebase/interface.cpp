@@ -11,8 +11,35 @@ in a readable format.
 This should also have a way of handling any errors that may arise, giving the user a message saying what went
 wrong without breaking the program.
 Lastly, this should have a way to end the program.
-All of this should be done with a readable interface. While it does not need to be overly complicated,
-any method that will allow the user to easily understand what is going on and what they can do is acceptable.
-This may mean a commandline interface, or it could also be a graphical interface of some kind. The primary concern
-is readability and functionality.
+The interface will be a simple command line interface, with the user entering a boolean expression to evaluate.
 */
+
+int main() {
+    //Introduction
+    cout << "Welcome to the Boolean Logic Evaluator!" << endl;
+    cout << "Please enter a boolean expression to evaluate." << endl;
+    cout << "Enter 'exit' to quit the program." << endl;
+    cout << "Operators: & (AND), | (OR), ! (NOT), @ (NAND), $ (XOR), () (Parenthesis)" << endl;
+    cout << "Use T for True and F for False." << endl;
+    cout << "Example: (T&F)|T" << endl << endl;
+
+    //Get input from user
+    string input;
+    while (true) {
+        cout << "Enter a boolean expression: ";
+        cin >> input;
+        //Check to exit
+        if (input == "exit" or input == "Exit" or input == "EXIT" or input == "e" or input == "E") {
+            cout << "Goodbye!" << endl;
+            break;
+        }
+        //Evaluate the expression
+        try {
+            BooleanExpressionCalculator calc;
+            cout << "The result of the expression is: " << calc.evaluate(input) << endl; //May need to convert from 1/0 to T/F
+        } catch (const char* e) { //Catch errors from the parser
+            cout << "Error: " << e << endl; //Print message may change as we figure out what errors are
+        }
+    }
+    return 0;
+}
