@@ -31,6 +31,14 @@ public:
             {'$', '$'}  // XOR
         };
 
+        std::unordered_map<char, std::string> operatorNames {
+            {'&', "AND"},
+            {'|', "OR"},
+            {'!', "NOT"},
+            {'@', "NAND"},
+            {'$', "XOR"} 
+        };
+
         // Convert 'T' to '1' and 'F' to '0' for standard boolean values
         unordered_map<char, char> truthValues { {'T', '1'}, {'F', '0'} };
         
@@ -43,6 +51,10 @@ public:
             } else if (validOperators.count(ch)) {
                 if (validOperators.count(lastChar)) {
                     throw runtime_error("Error: Consecutive operators.");
+                }
+                // Checks for missing operand if last character isn't alphanumberic, ')', or ' '
+                if (!isalnum(lastChar) && lastChar != ')' && lastChar != ' ') {
+                    throw runtime_error("Error: Missing operant after " + operatorNames[ch]);
                 }
                 output.push_back(ch);
             } else if (ch == '(') {
@@ -57,15 +69,28 @@ public:
                 } else {
                     throw runtime_error("Error: Unmatched closing parenthesis.");
                 }
-            } else if (!isalnum(ch) && ch != ' ') {
-                // If a character is not alphanumeric, an operator, or a space, it is considered invalid
-                throw runtime_error("Error: Invalid character encountered.");
+            } else if (ch != ' ') {
+                if (!isalnum(ch)) {
+                    // If a symbol is not an operator, raise error
+                    throw runtime_error("Error: Unrecognized operator symbol");
+                } else if (islower(ch)) {
+                    // If a character is lowercase, alphanumeric and not 'T' or 'F', it is invalid
+                    throw runtime_error("Error: Using invalid variable instead of 'T' or 'F'");
+                }
             }
             // Check for invalid alphanumeric characters that are not 'T' or 'F'
             if (isalnum(ch) && !truthValues.count(ch)) {
                 throw runtime_error("Error: Invalid truth value.");
             }
             lastChar = ch; // Update the last character variable for the next iteration
+        }
+        // Raise Error if input is empty
+        if (output.empty()) {
+            throw runtime_error("Error: Empty Expression");
+        }
+        // Check if last character is an operator and is after an operand
+        if (validOperators.count(lastChar) && !validOperators.count(output[0])) {
+            throw runtime_error("Error: " + operatorNames[lastChar] + " applied after value, not before");
         }
 
         // After processing all characters, ensure all opening parentheses have been matched
