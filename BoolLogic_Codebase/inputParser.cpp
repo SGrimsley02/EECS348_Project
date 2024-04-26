@@ -1,6 +1,3 @@
-#include <iostream>
-using namespace std;
-
 /* 
 This file should define an input parser. It should take an input string from the interface, then turn it into something usable by the evaluator.
   This may or may not be a string, it will depend on implementation of expression parser.
