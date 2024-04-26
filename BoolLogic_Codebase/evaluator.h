@@ -74,7 +74,7 @@ private:
         if (op == '!') { // If operator is NOT
             bool operand = operands.top(); operands.pop();
             operands.push(!operand);
-        } else { // For other operators (AND, OR, NOR, XOR)
+        } else { // For other operators (AND, OR, NAND, XOR)
             bool operand2 = operands.top(); operands.pop();
             bool operand1 = operands.top(); operands.pop();
             bool result;
@@ -82,7 +82,7 @@ private:
             switch (op) {
                 case '&': result = operand1 && operand2; break; // AND
                 case '|': result = operand1 || operand2; break; // OR
-                case '@': result = !(operand1 && operand2); break; // NOR (NOT AND)
+                case '@': result = !(operand1 && operand2); break; // NAND
                 case '$': result = (operand1 != operand2); break; // XOR
             }
             operands.push(result);
@@ -91,7 +91,7 @@ private:
 
     // Function to determine precedence of operators
     int precedence(char op) {
-        if (op == '!' || op == '@') return 4; // Highest precedence for NOT and NOR
+        if (op == '!' || op == '@') return 4; // Highest precedence for NOT and NAND
         else if (op == '&') return 3; // Higher precedence for AND
         else if (op == '|') return 2; // Lower precedence for OR
         else if (op == '$') return 1; // Lowest precedence for XOR
