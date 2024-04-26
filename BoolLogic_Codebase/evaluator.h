@@ -16,7 +16,7 @@ The output of this should be able to be passed back to the interface to be shown
 
 //Output: boolean of 1 or 0
 
-//Note: The evaluator work for T and F, not 1 and 0.  Also doesn't check for errors.
+//Note: The evaluator can work for whatever variables you assign to it with the set variable method.  Also it doesn't check for errors.
 
 using namespace std;
 
