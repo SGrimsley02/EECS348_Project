@@ -12,6 +12,12 @@ then give a boolean output corresponding to the original equation.
 The output of this should be able to be passed back to the interface to be shown to the user.
 */
 
+//Inputs: string with 'T', 'F', '(', ')', '@', '&', '$', '!', ' ', '|'
+
+//Output: boolean of 1 or 0
+
+//Note: The evaluator work for T and F, not 1 and 0.  Also doesn't check for errors.
+
 using namespace std;
 
 class BooleanExpressionCalculator {
