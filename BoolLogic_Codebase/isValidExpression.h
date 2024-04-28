@@ -18,7 +18,7 @@ bool isValidExpression(const std::string& expression) {
 
         //Handle invalid characters
         if (ch != 'T' && ch != 'F' && ch != '!' && ch != '&' && ch != '|' && ch != '@' && ch != '$' && ch != '(' && ch != ')') {
-            std::cerr << "Error: Unrecognized operator symbol.\n";
+            std::cerr << "Error: Unrecognized symbol.\n";
             return false;
         }
 
