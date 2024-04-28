@@ -57,7 +57,7 @@ int main() {
             calc.setVariable('F',false);
             bool result = calc.evaluate(input);
             if (isValidExpression(input)){
-                cout << "The result of the expression is: " << (result ? 'T' : 'F') << endl; //convert from 1/0 to T/F
+                cout << "The result of the expression is: " << (result ? 'True' : 'False') << endl; //convert from 1/0 to T/F
             }
         } catch (const char* e) { //Catch errors from the parser
             cout << "Error: " << e << endl; //Print message may change as we figure out what errors are
