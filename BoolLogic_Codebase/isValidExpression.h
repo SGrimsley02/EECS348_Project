@@ -42,7 +42,7 @@ bool isValidExpression(const std::string& expression) {
         }
 
         //Handle invalid character before operator
-        if ((prevChar == 0 || prevChar == ')' || prevChar == '(') && (ch == '|' || ch == '&' || ch == '@' || ch == '$')){
+        if ((prevChar == 0 || prevChar == '(') && (ch == '|' || ch == '&' || ch == '@' || ch == '$')){
             std::cerr << "Error: missing operand before operator.\n";
             return false;
         }
