@@ -3,8 +3,6 @@
 #include "isValidExpression.h"
 using namespace std;
 
-
-
 /*
 This program will handle any and all interaction with the user. It should be able to ask the user for input
 before passing off to the input parser, then it should send the output of the evaluator back to the user
@@ -35,7 +33,7 @@ int main() {
             break;
         }
         //Still need to actually parse the input, as of now just sending it straight to eval module for testing
-        //Final workflow will likely be to either send input to exp parse and from there to eval,
+        //Final workflow will likely be to either send input to exp parse and from there to evaluator,
         //Or send input to exp parse to clean input, then send from here to eval. Just depends on parse implementation
 
         
