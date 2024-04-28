@@ -26,7 +26,16 @@ int main() {
     string input;
     while (true) {
         cout << "\nEnter a boolean expression: ";
-        cin >> input;
+        //grab input until reach newline character 
+        char cur = ' ';
+        string input = "";
+        while (cur != '\n'){
+            cur = cin.get();
+            if (cur != ' ' && cur != '\n'){
+                input += cur;
+            }
+        }
+
         //Check to exit
         if (input == "exit" or input == "Exit" or input == "EXIT" or input == "e" or input == "E") {
             cout << "Goodbye!" << endl;

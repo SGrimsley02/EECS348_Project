@@ -27,6 +27,7 @@ private:
 
     // Function to evaluate the boolean expression
     bool evaluateExpression(const string& expression) {
+
         // Stacks to store operators and operands during evaluation
         stack<char> operators;
         stack<bool> operands;

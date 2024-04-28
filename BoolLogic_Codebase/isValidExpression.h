@@ -24,8 +24,12 @@ bool isValidExpression(const std::string& expression) {
             std::cerr << "Error: Consecutive operators." << std::endl;
             return false;
         }
-
+        /*
         if (operandExpected && ch == '!') {
+            std::cerr << "Error: Missing operand after NOT." << std::endl;
+            return false;
+        }*/
+        if (prevChar == '!' && !(ch == 'T' || ch == 'F' || ch == '(' || ch == '!')) {
             std::cerr << "Error: Missing operand after NOT." << std::endl;
             return false;
         }
