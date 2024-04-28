@@ -3,81 +3,88 @@
 #include <stack>
 #include <cctype>
 
+
 bool isValidExpression(const std::string& expression) {
     if (expression.empty()) {
-        std::cerr << "Error: Empty expression." << std::endl;
+        std::cerr << "Error: No operands or operators present.\n";
         return false;
     }
 
-    std::stack<char> parenthesesStack;
-    bool operandExpected = true;
-    char prevChar = '$'; // Initialize prevChar with a special character
+    std::stack<char> parentheses;
+    char prevChar = 0;  //Initialize prevChar with a non-operator to manage initial state
 
     for (char ch : expression) {
-        if (ch != 'T' && ch != 'F' && ch != ' ' && ch != '&' && ch != '|' &&
-            ch != '!' && ch != '@' && ch != '$' && ch != '(' && ch != ')') { //included: && ch != '(' && ch != ')' at the end
-            std::cerr << "Error: Unrecognized symbol '" << ch << "'." << std::endl;
+        if (isspace(ch)) continue; // Ignore spaces directly
+
+        //Handle invalid characters
+        if (ch != 'T' && ch != 'F' && ch != '!' && ch != '&' && ch != '|' && ch != '@' && ch != '$' && ch != '(' && ch != ')') {
+            std::cerr << "Error: Unrecognized operator symbol.\n";
             return false;
         }
 
-        if (!operandExpected && (ch == '&' || ch == '|' || ch == '!' || ch == '@' || ch == '$')) { 
-            std::cerr << "Error: Consecutive operators." << std::endl;
-            return false;
-        }
-        /*
-        if (operandExpected && ch == '!') {
-            std::cerr << "Error: Missing operand after NOT." << std::endl;
-            return false;
-        }*/
-        if (prevChar == '!' && !(ch == 'T' || ch == 'F' || ch == '(' || ch == '!')) {
-            std::cerr << "Error: Missing operand after NOT." << std::endl;
+        //Handle consecutive operators (not including '!')
+        if ((prevChar == '&' || prevChar == '|' || prevChar == '@' || prevChar == '$') && 
+            (ch == '&' || ch == '|' || ch == '@' || ch == '$')) {
+            std::cerr << "Error: Two consecutive operators.\n";
             return false;
         }
 
-        if (prevChar == '(' && (ch == '&' || ch == '|' || ch == '!' || ch == '@' || ch == '$')) {
-            std::cerr << "Error: Missing operand after '" << prevChar << "'." << std::endl;
+        //Ensure proper operand after NOT
+        if (prevChar == '!' && (ch != 'T' && ch != 'F' && ch != '(' && ch != '!')) {
+            std::cerr << "Error: Missing operand after NOT.\n";
             return false;
         }
 
-        if (prevChar == ')' && (ch == 'T' || ch == 'F')) {
-            std::cerr << "Error: Missing operator after ')'" << std::endl;
+        //Handle operands following each other without an operator
+        if ((ch == 'T' || ch == 'F') && (prevChar == 'T' || prevChar == 'F')) {
+            std::cerr << "Error: Missing operator between operands.\n";
             return false;
         }
 
+        //Handle invalid character before operator
+        if ((prevChar == 0 || prevChar == ')' || prevChar == '(') && (ch == '|' || ch == '&' || ch == '@' || ch == '$')){
+            std::cerr << "Error: missing operand before operator.\n";
+            return false;
+        }
+
+        //Handle invalid character after operator
+        if ((prevChar == '|' || prevChar == '&' || prevChar == '@' || prevChar == '$') && (ch == ')')){
+            std::cerr << "Error: missing operand after operator.\n";
+            return false;
+        }
+
+        //Parentheses handling
         if (ch == '(') {
-            parenthesesStack.push(ch);
+            parentheses.push(ch);
         } else if (ch == ')') {
-            if (parenthesesStack.empty()) {
-                std::cerr << "Error: Missing opening parenthesis for ')'" << std::endl;
+            if (parentheses.empty()) {
+                std::cerr << "Error: Missing opening parenthesis.\n";
                 return false;
             }
-            parenthesesStack.pop();
+            parentheses.pop();
         }
 
-        operandExpected = (ch == 'T' || ch == 'F' || ch == '(' || ch == '!' || ch == ')'); //included ch == ')'
-        prevChar = ch;
+        prevChar = ch; //Update last character seen
     }
 
-    if (!parenthesesStack.empty()) {
-        std::cerr << "Error: Missing closing parenthesis." << std::endl;
+    //Ensure all opened parentheses have been closed
+    if (!parentheses.empty()) {
+        std::cerr << "Error: Missing closing parenthesis.\n";
         return false;
     }
 
-    if (prevChar == '&' || prevChar == '|' || prevChar == '!' || prevChar == '@' || prevChar == '$') {
-        std::cerr << "Error: Consecutive operators." << std::endl;
+
+    //Ensure the expression does not end with an operator
+    if (prevChar == '&' || prevChar == '|' || prevChar == '@' || prevChar == '$' || prevChar == '!') {
+        std::cerr << "Error: Expression ends with an operator.\n";
         return false;
     }
 
     return true;
 }
 
-/*
-This file is home to the expression parser.
-When passed a value from the input parser, this should do the following things:
-	Confirm that there is valid input
- 	Check for parentheses, make sure they all match and are balanced
-  	Check for invalid statements, ex: (T &)
-	Perform any conversions necessary to make expression evaluatable by the eval module
- 		This could be type conversions, separation of expressions, or anything else to make
-   		evaluation easier.
+/*list of possible errors
+invalid characters, consecutive operators, correct operand after !,
+consecutive operands, invalid character before/after operator,
+missing parenthesis, ends in operantor. 
 */
