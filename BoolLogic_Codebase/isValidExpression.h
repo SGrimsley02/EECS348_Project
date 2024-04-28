@@ -15,12 +15,12 @@ bool isValidExpression(const std::string& expression) {
 
     for (char ch : expression) {
         if (ch != 'T' && ch != 'F' && ch != ' ' && ch != '&' && ch != '|' &&
-            ch != '!' && ch != '@' && ch != '$') {
+            ch != '!' && ch != '@' && ch != '$' && ch != '(' && ch != ')') { //included: && ch != '(' && ch != ')' at the end
             std::cerr << "Error: Unrecognized symbol '" << ch << "'." << std::endl;
             return false;
         }
 
-        if (!operandExpected && (ch == '&' || ch == '|' || ch == '!' || ch == '@' || ch == '$')) {
+        if (!operandExpected && (ch == '&' || ch == '|' || ch == '!' || ch == '@' || ch == '$')) { 
             std::cerr << "Error: Consecutive operators." << std::endl;
             return false;
         }
@@ -50,7 +50,7 @@ bool isValidExpression(const std::string& expression) {
             parenthesesStack.pop();
         }
 
-        operandExpected = (ch == 'T' || ch == 'F' || ch == '(' || ch == '!');
+        operandExpected = (ch == 'T' || ch == 'F' || ch == '(' || ch == '!' || ch == ')'); //included ch == ')'
         prevChar = ch;
     }
 
