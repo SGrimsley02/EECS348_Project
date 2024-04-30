@@ -1,3 +1,16 @@
+/*
+IMPORTANT NOTE:
+This code is not currently being used in the final simulator implementation, as
+there were some difficulties with combining this with the rest of the simulator
+and some of the checks were less efficient than those that were defined in the
+isValidExpression.h file. However, this code ended up being very beneficial in
+the debugging of several issues in said file, thus substantially reducing the
+time spent fixing those issues. As such, this code is kept here as a reference
+and in order to further document the work of the team, even though it is not
+explicitly in the final product.
+*/
+
+
 #include <iostream>
 #include <string>
 #include <stack>
