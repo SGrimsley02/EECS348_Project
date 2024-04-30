@@ -41,27 +41,23 @@ int main() {
             cout << "Goodbye!" << endl;
             break;
         }
-        //Still need to actually parse the input, as of now just sending it straight to eval module for testing
-        //Final workflow will likely be to either send input to exp parse and from there to evaluator,
-        //Or send input to exp parse to clean input, then send from here to eval. Just depends on parse implementation
+                
         
-        //Check if the input is a valid expression
-        if (!isValidExpression(input)) {
-            continue; //Skip to the next iteration of the loop, prompting for new input
-        }
         
         //Evaluate the expression
         try {
+            //Initialize
             BooleanExpressionCalculator calc;
             calc.setVariable('T',true);
             calc.setVariable('F',false);
-            bool result = calc.evaluate(input);
-            //could be rewritten, kinda redundant
-            if (isValidExpression(input)){
+            
+            
+            if (isValidExpression(input)){ //if the expression is valid
+                bool result = calc.evaluate(input); //eval
                 cout << "The result of the expression is: " << (result ? "True" : "False") << endl; //convert from 1/0 to T/F
             }
-        } catch (const char* e) { //Catch errors from the parser
-            cout << "Error: " << e << endl; //Print message may change as we figure out what errors are
+        } catch (const char* e) { //Catch errors from the parser (invalid expressions)
+            cout << "Error: " << e << endl; //Print message
         }
     }
     return 0;
